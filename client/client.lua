@@ -81,7 +81,11 @@ AddEventHandler('gusti_simcards:startNumChange', function(newNum)
             if Config.gcphoneEnabled then
                 Citizen.Wait(2000)
                 TriggerServerEvent('gcPhone:allUpdate')
-            end         
+            end
+            if Config.gksphoneEnabled then
+                Citizen.Wait(2000)   
+                TriggerServerEvent('gksphone:playerLoad', GetPlayerServerId(PlayerId()))
+            end    
         end   
     else
         TriggerServerEvent('gusti_simcards:changeNumber', newNum)   
@@ -89,7 +93,10 @@ AddEventHandler('gusti_simcards:startNumChange', function(newNum)
         Citizen.Wait(2000)                             
         if Config.gcphoneEnabled then
             TriggerServerEvent('gcPhone:allUpdate')
-        end  
+        end
+        if Config.gksphoneEnabled then   
+            TriggerServerEvent('gksphone:playerLoad', GetPlayerServerId(PlayerId()))
+        end   
     end
 	 
 end)
